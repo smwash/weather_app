@@ -17,7 +17,7 @@ class _LocationScreenState extends State<LocationScreen> {
   int temperature;
   String cityName;
   String weatherMessage;
-  String passedCityName;
+  var typedName;
 
   @override
   void initState() {
@@ -52,11 +52,13 @@ class _LocationScreenState extends State<LocationScreen> {
     });
   }
 
-  Future<dynamic> foreCast(String cityName) async {
-    var weatherData = await weather.getWeatherForeCast(cityName);
-    updateUI(weatherData);
-    return weatherData;
-  }
+  // Future<dynamic> foreCast(String cityName) async {
+  //   var weatherData = await weather.getWeatherForeCast(cityName);
+  //   updateUI(weatherData);
+  //   return weatherData;
+  // }
+
+  //var weatherData = await weather.getWeatherForeCast(typedName)  updateUI(weatherData);
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +93,7 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                   FlatButton(
                     onPressed: () async {
-                      var typedName = await Navigator.push(
+                      typedName = await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => CityScreen(),
@@ -115,9 +117,7 @@ class _LocationScreenState extends State<LocationScreen> {
               //   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               //   margin: EdgeInsets.all(15.0),
               //   color: Colors.black,
-              //   // child: Text(${
-              //   //   foreCast(typedName)
-              //   // }),
+              //   child: Text('${foreCast(typedName)}'),
               // ),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
